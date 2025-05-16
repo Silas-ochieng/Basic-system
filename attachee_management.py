@@ -1,7 +1,8 @@
 # Define classes
 class Attachee:
     def __init__(self, name, division):# initialize the object attribute
-        self.name = name #attribute: attachee's name
+        # Tracks attachees details and performance metrics.
+        self.name = name #attribute: attachee's name stores attachees full name
         self.division = division #attribute: attachee's division
         self.tasks = [] #attribute: list of tasks assigned to the attachee
         self.feedback = [] #attribute: list of feedbacks received by the attachee
@@ -36,10 +37,13 @@ class Division:
         self.attachees.append(attachee)
 
     def display_attachees(self):
-        print(f"Attachees in {self.name} Division:")
+        print(f"\nAttachees in {self.name} Division:")
         for attachee in self.attachees:
             performance = attachee.get_performance()
-            print(f"- {performance['name']} | Tasks: {performance['tasks']} | Feedback: {performance['feedback']} | Scores: {performance['scores']}")
+            print(f"Name: {performance['name']}")
+            print(f"Tasks: {', '.join(performance['tasks'])}") # use left join to display the list of task
+            print(f"Feedback: {', '.join(performance['feedback'])}") ##
+            print(f"Scores: {', '.join(map(str, performance['scores']))}") ##
 
 
 # Example Usage
